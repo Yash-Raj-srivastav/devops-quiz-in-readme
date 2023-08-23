@@ -1,0 +1,32 @@
+name: Quiz Comment
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  quiz-comment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if issue has "quiz" label
+        id: check-label
+        run: echo "::set-output name=has_label::$(echo ${{ github.event.issue.labels }} | grep -c 'quiz')"
+
+      - name: Comment with quiz answers
+        if: steps.check-label.outputs.has_label > 0
+        run: |
+          echo "**Here are the correct answers:**"
+          echo "- Question 1: Java"
+          echo "- Question 2: To automate the building, testing, and deployment of software"
+          echo "- Question 3: A series of automated steps that build, test, and deploy software"
+          echo "- Question 4: Jenkins Master is the central server, while Jenkins Slave is a remote agent"
+          echo "- Question 5: The directory where Jenkins stores build artifacts"
+          echo "- Question 6: A feature that allows users to test their Jenkinsfiles in a secure environment"
+          echo "- Question 7: To execute Jenkins jobs on Jenkins Nodes"
+          echo "- Question 8: To configure global settings for tools used in Jenkins jobs"
+          echo "- Question 9: To define Jenkins jobs in code"
+          echo "- Question 10: To define parameters that can be passed to Jenkins jobs"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

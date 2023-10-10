@@ -1,5 +1,5 @@
-# DevOps Quiz Gameeee
-Devops quiz in a cool way via readme file and github actions
+# DevOps Quiz Game
+Devops quiz in a cool way via readme file and github actionsssss
 
 Test your DevOps knowledge with this interactive quiz game!
 
